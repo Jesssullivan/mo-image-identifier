@@ -1,0 +1,7 @@
+python-dwca-reader
+tensorflow-cpu
+pandas
+bson
+tensorflow_hub
+matplotlib
+pillow
