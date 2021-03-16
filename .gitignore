@@ -6,7 +6,12 @@ mushroomobserver_venv
 .idea
 **/*.zip
 static/images.json
+static/js/*
+static/images/*
+
+# temp:
 train/demo_*
+web/*
 
 ### - - - ###
 

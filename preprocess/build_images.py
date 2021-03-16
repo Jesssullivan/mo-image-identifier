@@ -1,12 +1,16 @@
 import os
 import csv
 import json
+import subprocess
 
 # load common names:
 from common import *
 
+# import MO dwca class:
+from load_dwca import MODwca
 
-class BuildImagesJson:
+
+class BuildImages:
 
     def __init__(self,
                  _static_path=STATIC_PATH,
@@ -41,6 +45,17 @@ class BuildImagesJson:
                     # not an integer, skip it
                     pass
 
+    def fetch_leaflet_tool(self):
+
+        print('Fetching Leaflet annotator binaries...')
+
+        if not os.path.exists(self.static_path + "js/"):
+            os.makedirs(self.static_path + "js/")
+
+        for _obj in LEAFLET_URL, LEAFLET_URL + ".LICENSE.txt":
+            _cmd = "curl -L " + _obj + " --output ./static/js/" + _obj.split('/')[-1]
+            subprocess.Popen(_cmd, shell=True).wait()
+
     def write_images_json(self, _path=None):
 
         # let the caller save off archive somewhere else if they want with optional _path argument
@@ -56,4 +71,35 @@ class BuildImagesJson:
                   "  output file size: " + str(os.path.getsize(path)) + " bytes")
 
         else:
+
             print("...Hmm, didn't write images.json, no assets found!")
+
+    def fetch_online_images(self, _json):
+
+        print('Fetching online images from images.mushroomobserver.org...  \n...this may take a while :)')
+
+        if not os.path.exists(self.static_path + "images/"):
+            os.makedirs(self.static_path + "images/")
+
+        with open(_json, 'r') as f:
+            images_json = json.load(f)
+
+        print("Found " + str(len(images_json)) + " assets in " + _json + "...")
+
+        attempted = set()
+
+        for asset in images_json:
+
+            if asset['id'] not in attempted:
+
+                _dir_name = asset['category_id'].replace(" ", "_").lower()
+
+                if not os.path.exists(self.static_path + "images/" + _dir_name):
+                    os.makedirs(self.static_path + "images/" + _dir_name)
+
+                _cmd = str("curl -L " + asset['url'] +
+                           " --output ./static/images/" + _dir_name + "/" + asset['id'] + ".jpg")
+
+                subprocess.Popen(_cmd, shell=True).wait()
+
+                attempted.add(asset['id'])
