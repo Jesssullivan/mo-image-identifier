@@ -2,6 +2,8 @@ import os
 import csv
 import json
 import subprocess
+import tarfile
+import uuid
 
 # load common names:
 from common import *
@@ -103,3 +105,20 @@ class BuildImages:
                 subprocess.Popen(_cmd, shell=True).wait()
 
                 attempted.add(asset['id'])
+
+    def export_tgz(self):
+
+        if os.path.exists(self.static_path + "images/"):
+
+            _fname = self.static_path + "images_" + str(uuid.uuid4())[0:6] + ".tgz"
+
+            print("Writing tgz image archive to " + _fname + "...\n...")
+
+            with tarfile.open(_fname, "w:gz") as tar:
+                tar.add(self.static_path + "images/", arcname=os.path.basename(self.static_path + "images/"))
+
+            print("Finished writing tgz image archive! :)")
+
+        else:
+
+            print("Couldn't find static/images/ directory! :(")

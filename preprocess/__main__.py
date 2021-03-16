@@ -10,6 +10,9 @@ if __name__ == "__main__":
     """
     dwca = MODwca()
 
+    """BuildImages():
+    functions to construct image dataset and annotator artefacts 
+    """
     buildData = BuildImages()
 
     buildData.write_images_json()
@@ -17,3 +20,5 @@ if __name__ == "__main__":
     buildData.fetch_leaflet_tool()
 
     buildData.fetch_online_images(_json=STATIC_PATH + "images.json")
+
+    buildData.export_tgz()

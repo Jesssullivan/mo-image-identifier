@@ -5,6 +5,8 @@ mushroomobserver_venv
 **/.DS_Store
 .idea
 **/*.zip
+**/*.tgz
+
 static/images.json
 static/js/*
 static/images/*
