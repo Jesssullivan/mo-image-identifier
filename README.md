@@ -14,9 +14,7 @@ pip3 install -r requirements.txt
 ```
 
 
-#### *Fiddling with the archive:*
-
-*Run preprocessing scripts like this:*
+#### *Run preprocessing scripts like this:*
 
 ```
 python3 preprocess
@@ -26,6 +24,7 @@ python3 preprocess
 - Generates an `images.json` file from the 500 assets selected by Joe & Nathan
 
 
+#### *Fiddling with the archive:*
 - `MODwca.gbif[1].id`: Integer:  This is the Mushroom Observer id, e.g. 
   - `https://mushroomobserver.org/13`
   - `https://images.mushroomobserver.org/640/13.jpg`
