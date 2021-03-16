@@ -33,7 +33,7 @@ python3 preprocess
     "src": "https://mushroomobserver.org/images/640/290214.jpg"
   }]
   ```
-- Downloads the 500 selected assets from from *images.mushroomoberver.org* at`./static/images/<category>/<id>.jpg`;
+- Downloads the 500 selected assets from *images.mushroomoberver.org* at `./static/images/<category>/<id>.jpg`;
   - selected asset directory structure:
   ```
   ├── static
