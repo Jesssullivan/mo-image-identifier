@@ -1,12 +1,16 @@
-from dwca.read import DwCAReader
-from dwca.darwincore.utils import qualname as qn
 import requests
 import os
 
-STATIC_PATH = "static/"
-GBIF_URL = "https://images.mushroomobserver.org/exports/gbif_2021_03_13.zip"
-GBIF_NAME = "gbif.zip"
-GBIF_PATH = STATIC_PATH + GBIF_NAME
+# load common names:
+from common import *
+
+"""Make sure DwCAReader is installed;
+python3 -m venv mushroomobserver_venv
+source mushroomobserver_venv/bin/activate
+pip3 install -r requirements.txt
+"""
+from dwca.read import DwCAReader
+from dwca.darwincore.utils import qualname as qn
 
 
 class MODwca:
