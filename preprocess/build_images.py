@@ -33,15 +33,25 @@ class BuildImages:
             # open up Nathan and  Joe's merged csv files from Google Sheets:
             ln = csv.reader(f, delimiter=',', quotechar='|')
 
+            attempted = set()
+
             for row in ln:
                 try:
-                    # make sure we only adding integer keys:
-                    if int(row[0]):
-                        _obj = {'id': str(row[0]),
-                                'category_id': str(row[1]),
-                                'url': "https://images.mushroomobserver.org/640/" + str(row[0]) + ".jpg",
-                                'src': row[2]}
-                        self.json_df.append(_obj)
+
+                    if row[0] not in attempted:
+
+                        # make sure we only adding integer keys:
+                        if int(row[0]):
+
+                            _dir_name = str(row[1]).replace(" ", "_").lower()
+
+                            _obj = {'id': str(row[0]),
+                                    'category_id': str(row[1]),
+                                    'url': 'http://3.223.117.17/static/images/' + _dir_name + '/' + str(row[0]) + ".jpg",
+                                    'src': "https://images.mushroomobserver.org/640/" + str(row[0]) + ".jpg"
+                                }
+                            self.json_df.append(_obj)
+                            attempted.add(row[0])
 
                 except ValueError:
                     # not an integer, skip it
@@ -99,7 +109,7 @@ class BuildImages:
                 if not os.path.exists(self.static_path + "images/" + _dir_name):
                     os.makedirs(self.static_path + "images/" + _dir_name)
 
-                _cmd = str("curl -L " + asset['url'] +
+                _cmd = str("curl -L " + asset['src'] +
                            " --output ./static/images/" + _dir_name + "/" + asset['id'] + ".jpg")
 
                 subprocess.Popen(_cmd, shell=True).wait()

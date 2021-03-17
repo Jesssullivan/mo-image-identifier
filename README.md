@@ -25,13 +25,17 @@ python3 preprocess
 - Fetches Leaflet Annotator binary & licenses from [JessSullivan/MerlinAI-Interpreters](https://github.com/Jesssullivan/MerlinAI-Interpreters);  Need to commit annotator *(as of 03/16/21)*, still fussing with a version for Mushroom Observer  
 - Generates an `images.json` file from the 500 assets selected by Joe & Nathan
   - Leaflet Annotator `images.json` Structure:
-  ```
-  [{
-    "id": "12326",
-    "category_id": "Peltula euploca",
-    "url": "https://images.mushroomobserver.org/640/12326.jpg",
-    "src": "https://mushroomobserver.org/images/640/290214.jpg"
-  }]
+    - **id**: The MO asset id
+    - **category_id**: The taxon identified in the `./static/sample_select_assets.csv`; for directories and URIs this is converted to snake case.
+    - **url**: Temporary elastic ip address this asset will be available from, just to reduce any excessive / redundant traffic to *images.mushroomoberver.org*
+    - **src**: The asset's source URL from Mushroom Observer
+    ```
+    [{
+      "id": "12326",
+      "category_id": "Peltula euploca",
+       "url": "http://3.223.117.17/static/images/peltula_euploca/12326.jpg"
+       "src": "https://images.mushroomobserver.org/640/12326.jpg"
+    }]
   ```
 - Downloads the 500 selected assets from *images.mushroomoberver.org* at `./static/images/<category>/<id>.jpg`;
   - selected asset directory structure:
