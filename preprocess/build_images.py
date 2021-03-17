@@ -1,15 +1,15 @@
 import os
 import csv
 import json
+import random
 import subprocess
 import tarfile
-import uuid
+import glob
+from math import floor
+from shutil import copyfile
 
 # load common names:
 from common import *
-
-# import MO dwca class:
-from load_dwca import MODwca
 
 
 class BuildImages:
@@ -37,12 +37,12 @@ class BuildImages:
                 try:
                     # make sure we only adding integer keys:
                     if int(row[0]):
-
                         _dir_name = str(row[1]).replace(" ", "_").lower()
 
                         _obj = {'id': str(row[0]),
                                 'category_id': str(row[1]),
-                                'url': 'http://3.223.117.17/static/images/' + _dir_name + '/' + str(row[2]).split('/')[-1],
+                                'url': 'http://3.223.117.17/static/images/' + _dir_name + '/' + str(row[2]).split('/')[
+                                    -1],
                                 'src': str(row[2])
                                 }
 
@@ -105,20 +105,103 @@ class BuildImages:
 
             subprocess.Popen(_cmd, shell=True).wait()
 
-    def export_tgz(self):
+    def export_tgz(self, _dir="images/", _fname="images.tgz"):
 
-        if os.path.exists(self.static_path + "images/"):
+        if os.path.exists(self.static_path + _dir):
 
-            # _fname = self.static_path + "images_" + str(uuid.uuid4())[0:6] + ".tgz"  # uniquely named export not as useful as I thought...
-            _fname = self.static_path + "images.tgz"
+            _fname = self.static_path + _fname
 
-            print("Writing tgz image archive to " + _fname + "...\n...")
+            print("Writing " + _fname + "...\n...")
 
             with tarfile.open(_fname, "w:gz") as tar:
-                tar.add(self.static_path + "images/", arcname=os.path.basename(self.static_path + "images/"))
+                tar.add(self.static_path + _dir, arcname=os.path.basename(self.static_path + _dir))
 
-            print("Finished writing tgz image archive! :)")
+            print("Finished writing " + _fname + " :)")
 
         else:
 
-            print("Couldn't find static/images/ directory! :(")
+            print("Couldn't find " + _fname + " :(")
+
+    # just another way we can snag a random asset without doing a set operation:
+    @staticmethod
+    def _rand_file(_dir):
+        for f in glob.glob(_dir + "*.jpg"):
+            if random.random() < 0.1 and f is not None:
+                return f
+
+    def split_training_testing(self):
+
+        full_set = set()
+        set_size = 0
+
+        _train_set = set()
+        _train_dir = "training/"
+        _train_fname = "train.tgz"
+
+        _test_set = set()
+        _test_dir = "testing/"
+        _test_fname = "test.tgz"
+
+        if os.path.exists(self.static_path + "images/"):
+
+            for _set in _train_dir, _test_dir:
+                if not os.path.exists(self.static_path + _set):
+                    os.makedirs(self.static_path + _set)
+
+            _dirs = glob.glob(self.static_path + "images/*/")
+
+            """add a random half of the available assets to _train_set for each directory:"""
+
+            for d in _dirs:
+
+                _files = glob.glob(d + "/*.jpg")
+
+                # make sure sure are using count that is an even integer:
+                _count_per_set = floor(len(_files) / 2) * 2
+
+                for x in range(_count_per_set):
+                    full_set.add(_files[x])
+
+            set_size = int(len(full_set) / 2)
+
+            for _ in range(set_size):
+                _train_set.add(random.sample(full_set, 1)[0])
+
+        """add the remaining assets to _test_set"""
+
+        _test_set = full_set - _train_set
+
+        set_msg = str(
+            'full set size: ' + set_size.__str__() + '\n' +
+            'test set size: ' + len(_test_set).__str__() + '\n' +
+            'training set size: ' + len(_train_set).__str__()
+        )
+
+        print(set_msg)
+
+        """copy files from full set into train / test directories"""
+
+        test = {'dir': _test_dir, 'set': _test_set, 'tgz': _test_fname}
+        train = {'dir': _train_dir, 'set': _train_set, 'tgz': _train_fname}
+
+        for _path in train, test:
+
+            _dir = _path['dir']
+            _set = _path['set']
+            _tgz = _path['tgz']
+
+            if not os.path.exists(self.static_path + _dir):
+                os.makedirs(self.static_path + _dir)
+
+            for f in _set:
+
+                binomen = f.split('/')[-2]
+                fname = f.split('/')[-1]
+
+                if not os.path.exists(self.static_path + _dir + binomen):
+                    os.makedirs(self.static_path + _dir + binomen)
+
+                copyfile(f, self.static_path + _dir + binomen + "/" + fname)
+
+            # write archive:
+            self.export_tgz(_dir=_dir, _fname=_tgz)

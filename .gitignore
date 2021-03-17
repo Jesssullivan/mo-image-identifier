@@ -6,6 +6,7 @@ mushroomobserver_venv
 .idea
 **/*.zip
 **/*.tgz
+**/*.void
 
 static/images.json
 static/js/*
