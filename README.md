@@ -15,7 +15,7 @@ pip3 install -r requirements.txt
 ```
 
 
-|***Artifacts:***|[*training.tgz*](https://mo.columbari.us/static/train.tgz)|[*testing.tgz*](https://mo.columbari.us/static/test.tgz)|
+|***Artifacts:***|[*train.tgz*](https://mo.columbari.us/static/train.tgz)|[*test.tgz*](https://mo.columbari.us/static/test.tgz)|
 |---|---|---|
 |[*images.tgz*](https://mo.columbari.us/static/images.tgz) |[*images.json*](https://mo.columbari.us/static/images.json)|[*gbif.zip*](https://mo.columbari.us/static/gbif.zip)|
 
