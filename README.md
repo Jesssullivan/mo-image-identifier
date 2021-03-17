@@ -15,6 +15,12 @@ pip3 install -r requirements.txt
 ```
 
 
+*Temporary Artifacts:*
+
+|sample image set: *500 images, ~31.7mb*| sample image set annotator json|darwincore archive|
+|---|---|---|
+| [***images.tgz***](http://3.223.117.17/static/images.tgz) |[***images.json***](http://3.223.117.17/static/images.json)|[***gbif.zip***](http://3.223.117.17/static/gbif.zip)|
+
 
 #### *Run preprocessing scripts like this:*
 
@@ -29,14 +35,14 @@ python3 preprocess
   - Leaflet Annotator `images.json` Structure:
     - **id**: *taxonID* The MO taxon id
     - **category_id**: The binomen defined in the `./static/sample_select_assets.csv`; for directories and URIs this is converted to snake case.
-    - **url**: Temporary elastic ip address this asset will be available from, just to reduce any excessive / redundant traffic to *images.mushroomoberver.org*
+    - **url**: Temporary elastic ip address this asset will be available from, just to reduce any excessive / redundant traffic to *images.mushroomobserver.org*
     - **src**: *imageURL* The asset's source URL form  Mushroom Observer
     ```
     [{
       "id": "12326",
       "category_id": "Peltula euploca",
-       "url": "http://3.223.117.17/static/images/peltula_euploca/12326.jpg"
-       "src": "https://images.mushroomobserver.org/640/12326.jpg"
+       "url": "http://3.223.117.17/static/images/peltula_euploca/290214.jpg"
+       "src": "https://images.mushroomobserver.org/640/290214.jpg"
     }]
     ```
 
@@ -44,23 +50,20 @@ python3 preprocess
   - selected asset directory structure:
   ```
   ├── static
-  │   ├── gbif.zip
-  │   ├── images
-  │   │   ├── amanita_volvata
-  │   │   │   └── 1441.jpg
-  │   │   ├── ductifera_pululahuana
-  │   │   ├── peltula_euploca
-  │   │   │   └── 12326.jpg
-  │   │   ├── russula_modesta
-  │   │   │   └── 16580.jpg
-  │   │   └── thamnolia_subuliformis
-  │   │       └── 14148.jpg
-  │   │   ...
-  │   ├── images.json
-  │   ├── js
-  │   │   ├── leaflet.annotation.js
-  │   │   └── leaflet.annotation.js.LICENSE.txt
-  │   └── sample_select_assets.csv
+    ├── gbif.zip
+    ├── images
+    |   ...
+    │   └── peltula_euploca
+    │       ├── 290214.jpg
+    │       ...
+    │       └── 522128.jpg
+    │   ...
+    ├── images.json
+    ├── images.tgz
+    ├── js
+    │   ├── leaflet.annotation.js
+    │   └── leaflet.annotation.js.LICENSE.txt
+    └── sample_select_assets.csv
   ...
   ```
 
