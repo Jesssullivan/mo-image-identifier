@@ -9,5 +9,4 @@ waitress
 flask
 flask-cors
 tensorflow-cpu
-
-
+jupyter
