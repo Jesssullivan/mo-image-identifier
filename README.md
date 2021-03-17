@@ -1,4 +1,5 @@
 # image-identifer
+
 Tools for doing image-based mushroom identification
 
 
@@ -14,6 +15,7 @@ pip3 install -r requirements.txt
 ```
 
 
+
 #### *Run preprocessing scripts like this:*
 
 ```
@@ -25,10 +27,10 @@ python3 preprocess
 - Fetches Leaflet Annotator binary & licenses from [JessSullivan/MerlinAI-Interpreters](https://github.com/Jesssullivan/MerlinAI-Interpreters);  Need to commit annotator *(as of 03/16/21)*, still fussing with a version for Mushroom Observer  
 - Generates an `images.json` file from the 500 assets selected by Joe & Nathan
   - Leaflet Annotator `images.json` Structure:
-    - **id**: The MO asset id
-    - **category_id**: The taxon identified in the `./static/sample_select_assets.csv`; for directories and URIs this is converted to snake case.
+    - **id**: *taxonID* The MO taxon id
+    - **category_id**: The binomen defined in the `./static/sample_select_assets.csv`; for directories and URIs this is converted to snake case.
     - **url**: Temporary elastic ip address this asset will be available from, just to reduce any excessive / redundant traffic to *images.mushroomoberver.org*
-    - **src**: The asset's source URL from Mushroom Observer
+    - **src**: *imageURL* The asset's source URL form  Mushroom Observer
     ```
     [{
       "id": "12326",
@@ -36,7 +38,8 @@ python3 preprocess
        "url": "http://3.223.117.17/static/images/peltula_euploca/12326.jpg"
        "src": "https://images.mushroomobserver.org/640/12326.jpg"
     }]
-  ```
+    ```
+
 - Downloads the 500 selected assets from *images.mushroomoberver.org* at `./static/images/<category>/<id>.jpg`;
   - selected asset directory structure:
   ```
@@ -62,6 +65,7 @@ python3 preprocess
   ```
 
 
+- - -
 
 #### *Fiddling with the archive:*
 - `MODwca.gbif[1].id`: Integer:  This is the Mushroom Observer id, e.g.
