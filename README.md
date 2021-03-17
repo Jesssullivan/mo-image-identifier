@@ -15,9 +15,9 @@ pip3 install -r requirements.txt
 ```
 
 
-|***Artifacts:***|[*training.tgz*](http://3.223.117.17/static/train.tgz)|[*testing.tgz*](http://3.223.117.17/static/test.tgz)|
+|***Artifacts:***|[*training.tgz*](https://mo.columbari.us/static/train.tgz)|[*testing.tgz*](https://mo.columbari.us/static/test.tgz)|
 |---|---|---|
-|[*images.tgz*](http://3.223.117.17/static/images.tgz) |[*images.json*](http://3.223.117.17/static/images.json)|[*gbif.zip*](http://3.223.117.17/static/gbif.zip)|
+|[*images.tgz*](https://mo.columbari.us/static/images.tgz) |[*images.json*](https://mo.columbari.us/static/images.json)|[*gbif.zip*](https://mo.columbari.us/static/gbif.zip)|
 
 
 #### *Run preprocessing scripts like this:*
@@ -47,7 +47,7 @@ python3 preprocess
   [{
     "id": "12326",
     "category_id": "Peltula euploca",
-     "url": "http://3.223.117.17/static/images/peltula_euploca/290214.jpg"
+     "url": "https://mo.columbari.us/static/images/peltula_euploca/290214.jpg"
      "src": "https://images.mushroomobserver.org/640/290214.jpg"
   }]
   ```
