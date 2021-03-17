@@ -15,13 +15,11 @@ if __name__ == "__main__":
     """
     buildData = BuildImages()
 
-
     buildData.write_images_json()
 
     buildData.fetch_leaflet_tool()
 
     buildData.fetch_online_images(_json=STATIC_PATH + "images.json")
-
 
     buildData.export_tgz()
 
