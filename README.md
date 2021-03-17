@@ -15,11 +15,9 @@ pip3 install -r requirements.txt
 ```
 
 
-*Temporary Artifacts:*
-
-|sample image set: *500 images, ~31.7mb*| sample image set annotator json|darwincore archive|
+|***Artifacts:***|[*training.tgz*](http://3.223.117.17/static/train.tgz)|[*testing.tgz*](http://3.223.117.17/static/test.tgz)|
 |---|---|---|
-| [***images.tgz***](http://3.223.117.17/static/images.tgz) |[***images.json***](http://3.223.117.17/static/images.json)|[***gbif.zip***](http://3.223.117.17/static/gbif.zip)|
+|[*images.tgz*](http://3.223.117.17/static/images.tgz) |[*images.json*](http://3.223.117.17/static/images.json)|[*gbif.zip*](http://3.223.117.17/static/gbif.zip)|
 
 
 #### *Run preprocessing scripts like this:*
@@ -32,22 +30,28 @@ python3 preprocess
   - Checks the archive, tries loading it into memory etc
 - Fetches Leaflet Annotator binary & licenses from [JessSullivan/MerlinAI-Interpreters](https://github.com/Jesssullivan/MerlinAI-Interpreters);  Need to commit annotator *(as of 03/16/21)*, still fussing with a version for Mushroom Observer  
 - Generates an `images.json` file from the 500 assets selected by Joe & Nathan
-  - Leaflet Annotator `images.json` Structure:
-    - **id**: *taxonID* The MO taxon id
-    - **category_id**: The binomen defined in the `./static/sample_select_assets.csv`; for directories and URIs this is converted to snake case.
-    - **url**: Temporary elastic ip address this asset will be available from, just to reduce any excessive / redundant traffic to *images.mushroomobserver.org*
-    - **src**: *imageURL* The asset's source URL form  Mushroom Observer
-    ```
-    [{
-      "id": "12326",
-      "category_id": "Peltula euploca",
-       "url": "http://3.223.117.17/static/images/peltula_euploca/290214.jpg"
-       "src": "https://images.mushroomobserver.org/640/290214.jpg"
-    }]
-    ```
+- Downloads, organizes the 500 selected assets from *images.mushroomoberver.org* at `./static/images/<category>/<id>.jpg`
+  - writes out images archive
+- More or less randomly divvies up testing & training image sets
+  - writes out testing/training archives
 
-- Downloads the 500 selected assets from *images.mushroomoberver.org* at `./static/images/<category>/<id>.jpg`;
-  - selected asset directory structure:
+- - -
+
+
+- *Leaflet Annotator `images.json` Structure:*
+  - **id**: *taxonID* The MO taxon id
+  - **category_id**: The binomen defined in the `./static/sample_select_assets.csv`; for directories and URIs this is converted to snake case.
+  - **url**: Temporary elastic ip address this asset will be available from, just to reduce any excessive / redundant traffic to *images.mushroomobserver.org*
+  - **src**: *imageURL* The asset's source URL form  Mushroom Observer
+  ```
+  [{
+    "id": "12326",
+    "category_id": "Peltula euploca",
+     "url": "http://3.223.117.17/static/images/peltula_euploca/290214.jpg"
+     "src": "https://images.mushroomobserver.org/640/290214.jpg"
+  }]
+  ```
+- *Selected asset directory structure:*
   ```
   ├── static
     ├── gbif.zip
@@ -70,8 +74,13 @@ python3 preprocess
 
 - - -
 
-#### *Fiddling with the archive:*
-- `MODwca.gbif[1].id`: Integer:  This is the Mushroom Observer id, e.g.
+
+#### *Notes:*
+
+
+
+*Fiddling with the archive:*
+- `MODwca.gbif[1].id`: Integer:  This is the Mushroom Observer taxon id, e.g.
   - `https://mushroomobserver.org/13`
   - `https://images.mushroomobserver.org/640/13.jpg`
 
