@@ -3,10 +3,28 @@
 Tools for doing image-based mushroom identification
 
 
+- - - 
+
+
+***Overview:***
+- [**Setup**](#setup) <br>
+- [**Artifacts**](#artifacts) <br>
+- [**Preprocess**](#Preprocess) <br>
+- [**Artifacts**](#artifacts) <br>
+- [**Train**](#train) <br>
+- [**Structures**](#structures) <br>
+- [**Notes**](#notes) <br>
+
+
+
 - - -
 
 
-#### *Setup:*
+<h4 id="setup"> </h4>     
+
+
+
+### *Setup:*
 ```
 # venv:
 python3 -m venv mushroomobserver_venv
@@ -15,12 +33,21 @@ pip3 install -r requirements.txt
 ```
 
 
+<h4 id="artifacts"> </h4>
+
+
 |***Artifacts:***|[*train.tgz*](https://mo.columbari.us/static/train.tgz)|[*test.tgz*](https://mo.columbari.us/static/test.tgz)|
 |---|---|---|
 |[*images.tgz*](https://mo.columbari.us/static/images.tgz) |[*images.json*](https://mo.columbari.us/static/images.json)|[*gbif.zip*](https://mo.columbari.us/static/gbif.zip)|
 
 
-#### *Run preprocessing scripts like this:*
+- - - 
+
+
+<h4 id="preprocess"> </h4>
+
+
+### *Preprocess:*
 
 ```
 python3 preprocess
@@ -36,17 +63,46 @@ python3 preprocess
   - writes out example testing/training archives; (while training it'll probably be easier to resample directly from images.tgz from keras)
 
 
-#### *Training w/ Notebooks & Google Colab*
+
+### *Train:*
+
+```
+python3 train
+```
+
+- Fetches, divvies & shuffles train / validation sets from within Keras using archive available at [*mo.columbari.us/static/images.tgz*](https://mo.columbari.us/static/images.tgz)
+- More or less running Google's demo transfer learning training script in [`train/training_v1.py`](train/training_v1.py) as of *03/17/21*, still need to bring in training operations and whatnot from merlin_ai/ repo --> experiment with Danish Mycology Society's ImageNet v4 notes
 
 
-@gvanhorn38 pointed out Google Colabs's neat Jupter notebook service will train models for free if things are small enough- I have no idea what the limits are- fiddle with their [***intro to image classification on Google Colab here***](https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/images/classification.ipynb), its super cool!  Added more or less verbatim MO version of this to [./train/training_v1](./train/training_v1.ipynb) as well.  One can open and run the notebook locally like this-
-```
-jupyter notebook
-# or without authentication, something along the lines of:
-jupyter notebook --ip='*' --NotebookApp.token='' --NotebookApp.password=''
-```
+***Google Colab:***
+
+- [@gvanhorn38](https://github.com/gvanhorn38/) pointed out Google Colabs's neat Juptyer notebook service will train models for free if things are small enough- I have no idea what the limits are- fiddle with their [***intro to image classification on Google Colab here***](https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/images/classification.ipynb), its super cool!  Added more or less verbatim MO version of this to [./train/training_v1](./train/training_v1.ipynb) as well.  
+
+***Jupyter:***
+
+- One may also open and run notebooks locally like this:
+  - [rendered pdf version available over here](train/notebook/training_v1.pdf)
+  - rename ipython notebook:
+  ```
+  cp train/notebook/training_v1.ipynb.bak train/notebook/training_v1.ipynb
+  ```
+  - launch jupyter:
+  ```
+  jupyter notebook
+  ```
+  - or without authentication:
+  ```
+  jupyter notebook --ip='*' --NotebookApp.token='' --NotebookApp.password=''
+  ```
+
 
 - - -
+
+
+<h4 id="structures"> </h4>
+
+
+### *Structures:*
 
 
 - *Leaflet Annotator `images.json` Structure:*
@@ -83,7 +139,11 @@ jupyter notebook --ip='*' --NotebookApp.token='' --NotebookApp.password=''
   ```
 
 
+
 - - -
+
+
+<h4 id="notes"> </h4>
 
 
 #### *Notes:*
