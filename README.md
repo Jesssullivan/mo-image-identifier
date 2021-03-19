@@ -1,4 +1,4 @@
-### *Tools for doing image-based mushroom identification*
+# *Image-based mushroom identification*
 - [**@github.com**](https://github.com/Jesssullivan/mo-image-identifer) <br>
 - [**@github.io**](https://jesssullivan.github.io/mo-image-identifer/) <br>
 
@@ -20,7 +20,7 @@
 
 
 
-### *Setup:*
+## *Setup:*
 ```
 # venv:
 python3 -m venv mushroomobserver_venv
@@ -43,7 +43,7 @@ pip3 install -r requirements.txt
 <h4 id="preprocess"> </h4>
 
 
-### *Preprocess:*
+## *Preprocess:*
 
 ```
 python3 preprocess
@@ -60,7 +60,7 @@ python3 preprocess
 
 
 
-### *Train:*
+## *Train:*
 
 ```
 python3 train
