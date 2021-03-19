@@ -1,11 +1,25 @@
+<<<<<<< HEAD
 ### *Tools for doing image-based mushroom identification*
 - [**@github.com**](https://github.com/Jesssullivan/image-identifer) <br>
 - [**@github.io**](https://jesssullivan.github.io/image-identifer/) <br>
+=======
+# image-identifer
+
+Tools for doing image-based mushroom identification
+
+
+- - - 
+
+>>>>>>> image-identifer/main
 
 ***Overview:***
 - [**Setup**](#setup) <br>
 - [**Artifacts**](#artifacts) <br>
+<<<<<<< HEAD
 - [**Preprocess**](#preprocess) <br>
+=======
+- [**Preprocess**](#Preprocess) <br>
+>>>>>>> image-identifer/main
 - [**Artifacts**](#artifacts) <br>
 - [**Train**](#train) <br>
 - [**Structures**](#structures) <br>
@@ -72,8 +86,12 @@ python3 train
 
 ***Google Colab:***
 
+<<<<<<< HEAD
 - [@gvanhorn38](https://github.com/gvanhorn38/) pointed out Google Colabs's neat Juptyer notebook service will train models for free if things are small enough- I have no idea what the limits are- fiddle with their [***intro to image classification on Google Colab here***](https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/images/classification.ipynb), its super cool!
 
+=======
+- [@gvanhorn38](https://github.com/gvanhorn38/) pointed out Google Colabs's neat Juptyer notebook service will train models for free if things are small enough- I have no idea what the limits are- fiddle with their [***intro to image classification on Google Colab here***](https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/images/classification.ipynb), its super cool!  Added more or less verbatim MO version of this to [./train/training_v1](./train/training_v1.ipynb) as well.  
+>>>>>>> image-identifer/main
 
 ***Jupyter:***
 
@@ -146,6 +164,7 @@ python3 train
 #### *Notes:*
 
 
+<<<<<<< HEAD
 *...Progress:*  <br/>
 
 
@@ -153,6 +172,8 @@ python3 train
 |---|---|
 | ![](https://www.transscendsurvival.org/wp-content/uploads/2021/03/f1-281x300.png) | ![](https://www.transscendsurvival.org/wp-content/uploads/2021/03/f2-300x151.png) |
 
+=======
+>>>>>>> image-identifer/main
 
 *Fiddling with the archive:*
 - `MODwca.gbif[1].id`: Integer:  This is the Mushroom Observer taxon id, e.g.
