@@ -1,7 +1,7 @@
 
 # Image-based mushroom identification
-- [**@github.com**](https://github.com/Jesssullivan/image-identifer) <br>
-- [**@github.io**](https://jesssullivan.github.io/image-identifer/) <br>
+- [**@github.com**](https://github.com/Jesssullivan/mo-image-identifier/) <br>
+- [**@github.io**](https://jesssullivan.github.io/mo-image-identifier/) <br>
 - [**Web Annotator @ ai.columbari.us**](https://ai.columbari.us/annotator/photo) <br>
 
 
@@ -590,8 +590,3 @@ python3 train
   - `MODwca.gbif[1].data['http://rs.gbif.org/terms/1.0/gbifID']` = `13`
   - `MODwca.gbif[1].data['http://rs.tdwg.org/dwc/terms/recordedBy']` = `Nathan Wilson`
 
-
-
-```python
-
-```
