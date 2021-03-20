@@ -5,7 +5,7 @@
 - [**Web Annotator @ ai.columbari.us**](https://ai.columbari.us/annotator/photo) <br>
 
 
-- - - 
+- - -
 
 
 ## *Artifacts:*
@@ -16,7 +16,7 @@
 |[**@ai.columbari.us:**](https://ai.columbari.us/classify/server)|[***Web Annotator!***](https://ai.columbari.us/annotator/photo)|[*mo_example_task.tar.gz*](https://mo.columbari.us/static/mo_example_task.tar.gz)|[*mo_example_task.zip*](https://mo.columbari.us/static/mo_example_task.zip)|
 
 
-- - - 
+- - -
 
 
 
@@ -72,7 +72,7 @@ buildData.write_categories_json()
     Read core type: http://rs.tdwg.org/dwc/terms/Occurrence! :)
     Locality term is present! :)
     ...Loaded 75586 entries! :)
-    Wrote out a fresh static/images.json file! 
+    Wrote out a fresh static/images.json file!
       exported data length: 500
       output file size: 131011 bytes
     Fetching Leaflet annotator binaries...
@@ -91,7 +91,7 @@ buildData.write_categories_json()
     Writing static/test.tgz...
     ...
     Finished writing static/test.tgz :)
-    Wrote out a fresh static/categories.json file! 
+    Wrote out a fresh static/categories.json file!
       exported data length: 36
       output file size: 2689 bytes
 
@@ -150,9 +150,9 @@ PIL.Image.open(str(armillaria_tabescens[0]))
 
 
 
-    
-![png](output_10_0.png)
-    
+
+![png](static/md/output_10_0.png)
+
 
 
 
@@ -164,9 +164,9 @@ PIL.Image.open(str(armillaria_tabescens[1]))
 
 
 
-    
-![png](output_11_0.png)
-    
+
+![png](static/md/output_11_0.png)
+
 
 
 
@@ -276,9 +276,9 @@ for images, labels in train_ds.take(1):
 ```
 
 
-    
-![png](output_17_0.png)
-    
+
+![png](static/md/output_17_0.png)
+
 
 
 
@@ -312,7 +312,7 @@ normalized_ds = train_ds.map(lambda x, y: (normalization_layer(x), y))
 image_batch, labels_batch = next(iter(normalized_ds))
 first_image = image_batch[0]
 # Notice the pixels values are now in `[0,1]`.
-print(np.min(first_image), np.max(first_image)) 
+print(np.min(first_image), np.max(first_image))
 ```
 
     0.0 1.0
@@ -322,8 +322,8 @@ print(np.min(first_image), np.max(first_image))
 ```python
 data_augmentation = keras.Sequential(
   [
-    layers.experimental.preprocessing.RandomFlip("horizontal", 
-                                                 input_shape=(img_height, 
+    layers.experimental.preprocessing.RandomFlip("horizontal",
+                                                 input_shape=(img_height,
                                                               img_width,
                                                               3)),
     layers.experimental.preprocessing.RandomRotation(0.1),
@@ -464,9 +464,9 @@ plt.show()
 ```
 
 
-    
-![png](output_27_0.png)
-    
+
+![png](static/md/output_27_0.png)
+
 
 
 ## *Predict:*
@@ -494,7 +494,7 @@ print(
     This image most likely belongs to armillaria_tabescens with a 45.49 percent confidence.
 
 
-- - - 
+- - -
 
 ## *Train (Locally)*
 
@@ -539,16 +539,16 @@ python3 train
 
 - *Leaflet Annotator `images.json` Structure:*
   - **id**: *filename* The MO image filename
-  - **taxon_id**:  the MO taxon id integer 
+  - **taxon_id**:  the MO taxon id integer
   - **category_id**: The binomen defined in the `./static/sample_select_assets.csv`; for directories and URIs this is converted to snake case.
   - **url**: Temporary elastic ip address this asset will be available from, just to reduce any excessive / redundant traffic to *images.mushroomobserver.org*
   - **src**: *imageURL* The asset's source URL form  Mushroom Observer
   ```
   [{
-  "id": "290214.jpg", 
+  "id": "290214.jpg",
   "taxon_id": "12326",
-  "category_id": "Peltula euploca", 
-  "url": "https://mo.columbari.us/static/images/peltula_euploca/290214.jpg", 
+  "category_id": "Peltula euploca",
+  "url": "https://mo.columbari.us/static/images/peltula_euploca/290214.jpg",
   "src": "https://mushroomobserver.org/images/640/290214.jpg"
   }]
   ```
@@ -589,4 +589,3 @@ python3 train
 | ... | *51%*, ...a ways to go... |
 |---|---|
 | ![](https://www.transscendsurvival.org/wp-content/uploads/2021/03/f1-281x300.png) | ![](https://www.transscendsurvival.org/wp-content/uploads/2021/03/f2-300x151.png) |
-
