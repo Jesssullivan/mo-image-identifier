@@ -24,3 +24,5 @@ if __name__ == "__main__":
     buildData.export_tgz()
 
     buildData.split_training_testing()
+
+    buildData.write_categories_json()

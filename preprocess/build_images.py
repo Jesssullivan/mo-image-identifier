@@ -37,12 +37,15 @@ class BuildImages:
                 try:
                     # make sure we only adding integer keys:
                     if int(row[0]):
+
                         _dir_name = str(row[1]).replace(" ", "_").lower()
 
-                        _obj = {'id': str(row[0]),
+                        _obj = {'id': str(row[2]).split('/')[-1],
+                                'taxon_id': str(row[0]),
                                 'category_id': str(row[1]),
-                                'url': 'http://3.223.117.17/static/images/' + _dir_name + '/' + str(row[2]).split('/')[
-                                    -1],
+                                'category_dir': _dir_name,
+                                'url': 'https://mo.columbari.us/static/images/' + _dir_name + '/' +
+                                       str(row[2]).split('/')[-1],
                                 'src': str(row[2])
                                 }
 
@@ -145,6 +148,7 @@ class BuildImages:
         if os.path.exists(self.static_path + "images/"):
 
             for _set in _train_dir, _test_dir:
+
                 if not os.path.exists(self.static_path + _set):
                     os.makedirs(self.static_path + _set)
 
@@ -205,3 +209,39 @@ class BuildImages:
 
             # write archive:
             self.export_tgz(_dir=_dir, _fname=_tgz)
+
+    def write_categories_json(self, _path=None):
+
+        path = self.static_path + 'categories.json' if _path is None else _path
+
+        cats_df = []
+        _tmp_df = set()
+
+        for _obj in self.json_df:
+
+            _len = len(_tmp_df)
+
+            obj = {
+                'id': _obj['taxon_id'],
+                'name': _obj['category_id'],
+                'supercategory': 'fungi'
+            }
+
+            _tmp_df.add(_obj['taxon_id'])
+
+            if len(_tmp_df) > _len:
+                cats_df.append(obj)
+
+        if len(cats_df) > 0:
+
+            with open(path, 'w') as f:
+                json.dump(cats_df, f)
+
+            print("Wrote out a fresh " + path + " file! \n" +
+                  "  exported data length: " + str(len(cats_df)) + "\n" +
+                  "  output file size: " + str(os.path.getsize(path)) + " bytes")
+
+        else:
+
+            print("...Hmm, didn't write category.json, no fields found!")
+

@@ -1,25 +1,13 @@
-<<<<<<< HEAD
 ### *Tools for doing image-based mushroom identification*
 - [**@github.com**](https://github.com/Jesssullivan/image-identifer) <br>
 - [**@github.io**](https://jesssullivan.github.io/image-identifer/) <br>
-=======
-# image-identifer
+- [**Web Annotator @ ai.columbari.us**](https://ai.columbari.us/annotator/photo) <br>
 
-Tools for doing image-based mushroom identification
-
-
-- - - 
-
->>>>>>> image-identifer/main
 
 ***Overview:***
 - [**Setup**](#setup) <br>
 - [**Artifacts**](#artifacts) <br>
-<<<<<<< HEAD
 - [**Preprocess**](#preprocess) <br>
-=======
-- [**Preprocess**](#Preprocess) <br>
->>>>>>> image-identifer/main
 - [**Artifacts**](#artifacts) <br>
 - [**Train**](#train) <br>
 - [**Structures**](#structures) <br>
@@ -46,12 +34,15 @@ pip3 install -r requirements.txt
 <h4 id="artifacts"> </h4>
 
 
-|***Artifacts:***|[*train.tgz*](https://mo.columbari.us/static/train.tgz)|[*test.tgz*](https://mo.columbari.us/static/test.tgz)|
-|---|---|---|
-|[*images.tgz*](https://mo.columbari.us/static/images.tgz) |[*images.json*](https://mo.columbari.us/static/images.json)|[*gbif.zip*](https://mo.columbari.us/static/gbif.zip)|
+### *Artifacts:*
+
+|**Dataset:**|[*images.tgz*](https://mo.columbari.us/static/images.tgz)|[*train.tgz*](https://mo.columbari.us/static/train.tgz)|[*test.tgz*](https://mo.columbari.us/static/test.tgz)|
+|---|---|---|---|
+|**Annotator json:**|[*images.json*](https://mo.columbari.us/static/images.json)|[*categories.json*](https://mo.columbari.us/static/categories.json)|[*config.json*](https://mo.columbari.us/static/config.json)|
+|[**@ai.columbari.us:**](https://ai.columbari.us/classify/server)|[***Web Annotator!***](https://ai.columbari.us/annotator/photo)|[*mo_example_task.tar.gz*](https://mo.columbari.us/static/mo_example_task.tar.gz)|[*mo_example_task.zip*](https://mo.columbari.us/static/mo_example_task.zip)|
 
 
-- - - 
+- - -
 
 
 <h4 id="preprocess"> </h4>
@@ -65,8 +56,9 @@ python3 preprocess
 
 - Fetches & saves off gbif archive to `./static/`
   - Checks the archive, tries loading it into memory etc
-- Fetches Leaflet Annotator binary & licenses from [JessSullivan/MerlinAI-Interpreters](https://github.com/Jesssullivan/MerlinAI-Interpreters);  Need to commit annotator *(as of 03/16/21)*, still fussing with a version for Mushroom Observer  
-- Generates an `images.json` file from the 500 assets selected by Joe & Nathan
+- Fetches Leaflet Annotator binary & licenses from [JessSullivan/MerlinAI-Interpreters](https://github.com/Jesssullivan/MerlinAI-Interpreters)
+- Generates an `images.json` annotation file from the 500 assets selected by Joe & Nathan
+- Generates an `categories.json` file from the 36 annotatable classes selected by Joe & Nathan
 - Downloads, organizes the 500 selected assets from *images.mushroomoberver.org* at `./static/images/<category>/<id>.jpg`
   - writes out images archive
 - More or less randomly divvies up testing & training image sets
@@ -86,12 +78,8 @@ python3 train
 
 ***Google Colab:***
 
-<<<<<<< HEAD
 - [@gvanhorn38](https://github.com/gvanhorn38/) pointed out Google Colabs's neat Juptyer notebook service will train models for free if things are small enough- I have no idea what the limits are- fiddle with their [***intro to image classification on Google Colab here***](https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/images/classification.ipynb), its super cool!
 
-=======
-- [@gvanhorn38](https://github.com/gvanhorn38/) pointed out Google Colabs's neat Juptyer notebook service will train models for free if things are small enough- I have no idea what the limits are- fiddle with their [***intro to image classification on Google Colab here***](https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/images/classification.ipynb), its super cool!  Added more or less verbatim MO version of this to [./train/training_v1](./train/training_v1.ipynb) as well.  
->>>>>>> image-identifer/main
 
 ***Jupyter:***
 
@@ -164,7 +152,6 @@ python3 train
 #### *Notes:*
 
 
-<<<<<<< HEAD
 *...Progress:*  <br/>
 
 
@@ -172,8 +159,6 @@ python3 train
 |---|---|
 | ![](https://www.transscendsurvival.org/wp-content/uploads/2021/03/f1-281x300.png) | ![](https://www.transscendsurvival.org/wp-content/uploads/2021/03/f2-300x151.png) |
 
-=======
->>>>>>> image-identifer/main
 
 *Fiddling with the archive:*
 - `MODwca.gbif[1].id`: Integer:  This is the Mushroom Observer taxon id, e.g.

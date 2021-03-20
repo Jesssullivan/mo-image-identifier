@@ -13,6 +13,11 @@ from dwca.read import DwCAReader
 from dwca.darwincore.utils import qualname as qn
 
 
+# todo:
+#  - figure out how we'll want to use dwca as part of
+#  - the preprocessing --> train pipeline in the future
+
+
 class MODwca:
 
     def __init__(self,
@@ -21,7 +26,7 @@ class MODwca:
                  _gbif_url=GBIF_URL):
 
         # we'll put all row & id data in here:
-        self.gbif=None
+        self.gbif = None
 
         # paths for fetching and saving the gbif export:
         self.gbif_path = _gbif_path
@@ -30,7 +35,7 @@ class MODwca:
 
         # by default, lets put the export here:
         if not os.path.exists(self.static_path):
-            os.makedirs( self.static_path)
+            os.makedirs(self.static_path)
 
         # load the data into memory:
         try:
