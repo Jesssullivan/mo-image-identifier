@@ -580,7 +580,7 @@ python3 train
 <h4 id="notes"> </h4>
 
 
-### *Notes:*
+#### *Notes:*
 
 
 *...Progress:*  <br/>
