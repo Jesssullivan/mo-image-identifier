@@ -1,19 +1,12 @@
-```python
-### *Image-based mushroom identification*
+
+# Image-based mushroom identification
 - [**@github.com**](https://github.com/Jesssullivan/image-identifer) <br>
 - [**@github.io**](https://jesssullivan.github.io/image-identifer/) <br>
 - [**Web Annotator @ ai.columbari.us**](https://ai.columbari.us/annotator/photo) <br>
 
 
-***Overview:***
-- [**Setup**](#setup) <br>
-- [**Artifacts**](#artifacts) <br>
-- [**Preprocess**](#preprocess) <br>
-- [**Artifacts**](#artifacts) <br>
-- [**Train**](#train) <br>
-- [**Structures**](#structures) <br>
-- [**Notes**](#notes) <br>
-```
+- - - 
+
 
 ## *Setup (Locally)*
 
