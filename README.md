@@ -530,16 +530,18 @@ python3 train
 
 
 - *Leaflet Annotator `images.json` Structure:*
-  - **id**: *taxonID* The MO taxon id
+  - **id**: *filename* The MO image id filename
+  - **taxon_id**:  the MO taxon id integer 
   - **category_id**: The binomen defined in the `./static/sample_select_assets.csv`; for directories and URIs this is converted to snake case.
   - **url**: Temporary elastic ip address this asset will be available from, just to reduce any excessive / redundant traffic to *images.mushroomobserver.org*
   - **src**: *imageURL* The asset's source URL form  Mushroom Observer
   ```
   [{
-    "id": "12326",
-    "category_id": "Peltula euploca",
-     "url": "https://mo.columbari.us/static/images/peltula_euploca/290214.jpg"
-     "src": "https://images.mushroomobserver.org/640/290214.jpg"
+  "id": "290214.jpg", 
+  "taxon_id": "12326",
+  "category_id": "Peltula euploca", 
+  "url": "https://mo.columbari.us/static/images/peltula_euploca/290214.jpg", 
+  "src": "https://mushroomobserver.org/images/640/290214.jpg"
   }]
   ```
 - *Selected asset directory structure:*
