@@ -8,6 +8,18 @@
 - - - 
 
 
+## *Artifacts:*
+
+|**Dataset:**|[*images.tgz*](https://mo.columbari.us/static/images.tgz)|[*train.tgz*](https://mo.columbari.us/static/train.tgz)|[*test.tgz*](https://mo.columbari.us/static/test.tgz)|
+|---|---|---|---|
+|**Annotator json:**|[*images.json*](https://mo.columbari.us/static/images.json)|[*categories.json*](https://mo.columbari.us/static/categories.json)|[*config.json*](https://mo.columbari.us/static/config.json)|
+|[**@ai.columbari.us:**](https://ai.columbari.us/classify/server)|[***Web Annotator!***](https://ai.columbari.us/annotator/photo)|[*mo_example_task.tar.gz*](https://mo.columbari.us/static/mo_example_task.tar.gz)|[*mo_example_task.zip*](https://mo.columbari.us/static/mo_example_task.zip)|
+
+
+- - - 
+
+
+
 ## *Setup (Locally)*
 
 ```console
@@ -17,12 +29,8 @@ source mushroomobserver_venv/bin/activate
 pip3 install -r requirements.txt
 ```
 
-## *Artifacts:*
 
-|**Dataset:**|[*images.tgz*](https://mo.columbari.us/static/images.tgz)|[*train.tgz*](https://mo.columbari.us/static/train.tgz)|[*test.tgz*](https://mo.columbari.us/static/test.tgz)|
-|---|---|---|---|
-|**Annotator json:**|[*images.json*](https://mo.columbari.us/static/images.json)|[*categories.json*](https://mo.columbari.us/static/categories.json)|[*config.json*](https://mo.columbari.us/static/config.json)|
-|[**@ai.columbari.us:**](https://ai.columbari.us/classify/server)|[***Web Annotator!***](https://ai.columbari.us/annotator/photo)|[*mo_example_task.tar.gz*](https://mo.columbari.us/static/mo_example_task.tar.gz)|[*mo_example_task.zip*](https://mo.columbari.us/static/mo_example_task.zip)|
+- - -
 
 
 ## *Preprocess: (Jupyter)*
@@ -530,7 +538,7 @@ python3 train
 
 
 - *Leaflet Annotator `images.json` Structure:*
-  - **id**: *filename* The MO image id filename
+  - **id**: *filename* The MO image filename
   - **taxon_id**:  the MO taxon id integer 
   - **category_id**: The binomen defined in the `./static/sample_select_assets.csv`; for directories and URIs this is converted to snake case.
   - **url**: Temporary elastic ip address this asset will be available from, just to reduce any excessive / redundant traffic to *images.mushroomobserver.org*
@@ -581,14 +589,4 @@ python3 train
 | ... | *51%*, ...a ways to go... |
 |---|---|
 | ![](https://www.transscendsurvival.org/wp-content/uploads/2021/03/f1-281x300.png) | ![](https://www.transscendsurvival.org/wp-content/uploads/2021/03/f2-300x151.png) |
-
-
-*Fiddling with the archive:*
-- `MODwca.gbif[1].id`: Integer:  This is the Mushroom Observer taxon id, e.g.
-  - `https://mushroomobserver.org/13`
-  - `https://images.mushroomobserver.org/640/13.jpg`
-
-- `MODwca.gbif[1].data:`: Dictionary: DWCA row data, e.g.
-  - `MODwca.gbif[1].data['http://rs.gbif.org/terms/1.0/gbifID']` = `13`
-  - `MODwca.gbif[1].data['http://rs.tdwg.org/dwc/terms/recordedBy']` = `Nathan Wilson`
 
