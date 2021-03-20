@@ -1,4 +1,4 @@
-### *Tools for doing image-based mushroom identification*
+### *Image-based mushroom identification*
 - [**@github.com**](https://github.com/Jesssullivan/image-identifer) <br>
 - [**@github.io**](https://jesssullivan.github.io/image-identifer/) <br>
 - [**Web Annotator @ ai.columbari.us**](https://ai.columbari.us/annotator/photo) <br>
@@ -22,7 +22,7 @@
 
 
 
-### *Setup:*
+## *Setup:*
 ```
 # venv:
 python3 -m venv mushroomobserver_venv
@@ -48,7 +48,7 @@ pip3 install -r requirements.txt
 <h4 id="preprocess"> </h4>
 
 
-### *Preprocess:*
+## *Preprocess:*
 
 ```
 python3 preprocess
@@ -66,7 +66,7 @@ python3 preprocess
 
 
 
-### *Train:*
+## *Train:*
 
 ```
 python3 train
@@ -76,15 +76,15 @@ python3 train
 - More or less running Google's demo transfer learning training script in [`train/training_v1.py`](train/training_v1.py) as of *03/17/21*, still need to bring in training operations and whatnot from merlin_ai/ repo --> experiment with Danish Mycology Society's ImageNet v4 notes
 
 
-***Google Colab:***
+### *Google Colab:*
 
 - [@gvanhorn38](https://github.com/gvanhorn38/) pointed out Google Colabs's neat Juptyer notebook service will train models for free if things are small enough- I have no idea what the limits are- fiddle with their [***intro to image classification on Google Colab here***](https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/images/classification.ipynb), its super cool!
 
 
-***Jupyter:***
+### *Jupyter:*
 
 - One may also open and run notebooks locally like this:
-  - [rendered pdf version available over here](train/notebook/training_v1.pdf)
+  - [***rendered pdf version available over here***](train/notebook/training_v1.pdf)
   - rename ipython notebook:
   ```
   cp train/notebook/training_v1.ipynb.bak train/notebook/training_v1.ipynb
@@ -149,7 +149,7 @@ python3 train
 <h4 id="notes"> </h4>
 
 
-#### *Notes:*
+### *Notes:*
 
 
 *...Progress:*  <br/>
