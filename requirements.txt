@@ -1,4 +1,5 @@
 python-dwca-reader
+# tensorflow
 tensorflow-cpu
 pandas
 bson
@@ -8,5 +9,4 @@ pillow
 waitress
 flask
 flask-cors
-tensorflow-cpu
 jupyter
