@@ -13,7 +13,7 @@
 
 
 *Remote & Notebook Processing:* <br>
-- [**Google Colab**](#ncolab) <br>
+- [**Google Colab**](#colab) <br>
 - [**Remote Jupyter & Notes**](#notes) <br>
 
 - - -
