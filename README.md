@@ -151,7 +151,13 @@ python3 preprocess
 
 
 
-  ## *Train (Locally)*
+<h4 id="train"> </h4>
+
+
+
+
+
+## *Train (Locally)*
 
   ```
   python3 train
@@ -184,7 +190,9 @@ python3 preprocess
 
 
 
-  <h4 id="colab"> </h4>
+
+<h4 id="colab"> </h4>
+
 
 
 
