@@ -69,7 +69,7 @@ class Preprocess:
                                     'taxon_id': str(row[0]),
                                     'category_id': str(row[0]),
                                     'category_dir': _dir_name,
-                                    'url': 'https://mo.columbari.us/static/images/' + str(row[1]) + ".jpg",
+                                    'url': 'https://mo.columbari.us/static/images/' +_dir_name + "/" + str(row[1]) + ".jpg",
                                     'src': JPG_URL_PREFIX + str(row[1]) + ".jpg"
                                     }
 
