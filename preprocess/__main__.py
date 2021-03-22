@@ -1,5 +1,5 @@
 from load_dwca import MODwca
-from build_images import BuildImages
+from preprocess import Preprocess
 from common import *
 
 if __name__ == "__main__":
@@ -13,7 +13,7 @@ if __name__ == "__main__":
     """BuildImages():
     functions to construct image dataset and annotator artefacts
     """
-    buildData = BuildImages()
+    buildData = Preprocess()
 
     buildData.write_images_json()
 
